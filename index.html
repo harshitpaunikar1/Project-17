@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading the Power User Curve</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* 
+      DESIGN SYSTEM: "Teaching Essay"
+      Black and white only. Typography-driven.
+      Generous negative space, tall hero chart, short interpretive bursts.
+    */
+    :root {
+      --bg: #ffffff;
+      --text-main: #1a1a1a;
+      --text-muted: #555555;
+      --text-faint: #888888;
+      --border-dark: #111111;
+      --border-light: #e8e8e8;
+      --f-serif: 'Playfair Display', serif;
+      --f-sans: 'Inter', sans-serif;
+      --code-bg: #111111;
+      --code-text: #f5f5f5;
+      --mono: ui-monospace, SFMono-Regular, "Courier New", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--f-serif);
+      font-size: 1.2rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Layout: Off-axis, generous negative space */
+    .essay-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 3fr 7fr;
+      grid-gap: 4rem;
+      align-items: start;
+    }
+
+    /* Header spans full width */
+    header {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+
+    header .eyebrow {
+      font-family: var(--f-sans);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    header .deck {
+      font-family: var(--f-sans);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Hero SVG Chart */
+    .hero-chart {
+      grid-column: 1 / -1;
+      margin-bottom: 6rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 2rem;
+    }
+
+    /* Sidebars and H2s */
+    .section-prompt {
+      font-family: var(--f-sans);
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text-main);
+      position: sticky;
+      top: 4rem;
+    }
+
+    .section-prompt::before {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 4px;
+      background-color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    /* Prose Column */
+    .prose {
+      font-family: var(--f-serif);
+      margin-bottom: 6rem;
+    }
+
+    .prose p {
+      margin-bottom: 2rem;
+    }
+
+    .burst {
+      font-family: var(--f-sans);
+      font-size: 1.6rem;
+      font-weight: 300;
+      line-height: 1.4;
+      padding-left: 2rem;
+      border-left: 2px solid var(--border-dark);
+      margin: 3rem 0;
+      color: var(--text-main);
+    }
+
+    /* Code block inside prose */
+    pre {
+      background-color: var(--code-bg);
+      color: var(--code-text);
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      padding: 1.5rem;
+      overflow-x: auto;
+      margin: 3rem 0;
+    }
+
+    code {
+      font-family: var(--mono);
+    }
+    
+    .comment { color: #888888; }
+    .keyword { color: #ffffff; font-weight: bold; }
+
+    /* Comparative Cards Layout */
+    .comparative-cards {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 4rem;
+      margin-bottom: 6rem;
+      padding-top: 4rem;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .card {
+      background: var(--bg);
+    }
+
+    .card h3 {
+      font-family: var(--f-sans);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-family: var(--f-sans);
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+
+    /* Diagram Captions */
+    .caption {
+      font-family: var(--f-sans);
+      font-size: 0.9rem;
+      color: var(--text-faint);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .essay-container {
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+      }
+      .section-prompt {
+        position: relative;
+        top: 0;
+        margin-top: 2rem;
+      }
+      .comparative-cards {
+        grid-template-columns: 1fr;
+      }
+      header h1 { font-size: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="essay-container">
+  
+  <header>
+    <span class="eyebrow">Product Analytics Explainer</span>
+    <h1>Reading the Power User Curve</h1>
+    <p class="deck">DAU/MAU is a blunt instrument that collapses human behavior into a single ambiguous percentage. To understand whether a product actually commands attention, we must transition from stickiness shorthand to distributional thinking.</p>
+  </header>
+
+  <!-- Giant Hero Chart -->
+  <div class="hero-chart">
+    <svg viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid meet">
+      <!-- Grid Lines -->
+      <line x1="80" y1="340" x2="950" y2="340" stroke="#111" stroke-width="2" />
+      <line x1="80" y1="70" x2="80" y2="340" stroke="#111" stroke-width="2" />
+
+      <!-- Axis Labels -->
+      <text x="40" y="75" font-family="Inter" font-size="12" fill="#555" transform="rotate(-90 40 75)">% of Active Users</text>
+      <text x="500" y="380" font-family="Inter" font-size="14" font-weight="600" text-anchor="middle">Days Active in Month (1 - 30)</text>
+
+      <!-- Ticks -->
+      <text x="80" y="360" font-family="Inter" font-size="12" text-anchor="middle">1</text>
+      <text x="370" y="360" font-family="Inter" font-size="12" text-anchor="middle">10</text>
+      <text x="660" y="360" font-family="Inter" font-size="12" text-anchor="middle">20</text>
+      <text x="950" y="360" font-family="Inter" font-size="12" text-anchor="middle">30</text>
+
+      <!-- Histogram Bars (Anatomy of a healthy "Smile" curve) -->
+      <!-- Casual User Region -->
+      <rect x="85" y="120" width="20" height="220" fill="#bbb" />
+      <rect x="110" y="200" width="20" height="140" fill="#ddd" />
+      <rect x="135" y="250" width="20" height="90" fill="#eee" />
+
+      <!-- Core/Emerging Users -->
+      <rect x="160" y="290" width="20" height="50" fill="#f8f8f8" stroke="#e8e8e8"/>
+      <rect x="185" y="300" width="20" height="40" fill="#f8f8f8" stroke="#e8e8e8"/>
+      <!-- flat middle up to day 20 -->
+      <rect x="370" y="315" width="20" height="25" fill="#f8f8f8" stroke="#e8e8e8"/>
+      <rect x="660" y="300" width="20" height="40" fill="#f8f8f8" stroke="#e8e8e8"/>
+
+      <!-- Power Users (Ascent) -->
+      <rect x="850" y="270" width="20" height="70" fill="#ddd" />
+      <rect x="875" y="220" width="20" height="120" fill="#bbb" />
+      <rect x="900" y="140" width="20" height="200" fill="#555" />
+      <rect x="925" y="80" width="20" height="260" fill="#111" />
+
+      <!-- Annotations for Regions -->
+      <!-- Left Bracket (Casual) -->
+      <path d="M 85 100 L 85 90 L 155 90 L 155 100" stroke="#111" fill="none" />
+      <text x="120" y="80" font-family="Inter" font-size="12" font-weight="600" text-anchor="middle">CASUAL USERS</text>
+      <text x="120" y="65" font-family="Inter" font-size="10" fill="#555" text-anchor="middle">Low engagement intent</text>
+
+      <!-- Middle Bracket (Emerging) -->
+      <path d="M 160 230 L 160 220 L 840 220 L 840 230" stroke="#888" stroke-dasharray="4" fill="none" />
+      <text x="500" y="210" font-family="Inter" font-size="12" font-weight="600" fill="#555" text-anchor="middle">EMERGING REGULARS</text>
+      <text x="500" y="195" font-family="Inter" font-size="10" fill="#888" text-anchor="middle">Habit formation zone</text>
+
+      <!-- Right Bracket (Power) -->
+      <path d="M 850 60 L 850 50 L 945 50 L 945 60" stroke="#111" fill="none" />
+      <text x="897" y="40" font-family="Inter" font-size="12" font-weight="600" text-anchor="middle">POWER USERS</text>
+      <text x="897" y="25" font-family="Inter" font-size="10" fill="#555" text-anchor="middle">The retention engine</text>
+    </svg>
+    <div class="caption">
+      Anatomy of the Power User Curve. The X-axis represents the number of active days in a month. The Y-axis represents the percentage of the total active user base that falls into each bucket. A healthy consumer product often exhibits this "smile" shape, indicating two distinct user populations: a casual mass and a highly devoted core.
+    </div>
+  </div>
+
+  <h2 class="section-prompt">Why do we still rely on DAU/MAU when it hides the behavior we are looking for?</h2>
+  
+  <div class="prose">
+    <p>For a decade, consumer technology companies leaned on a single metric to broadcast product health: the ratio of Daily Active Users to Monthly Active Users (DAU/MAU). If your app boasted a DAU/MAU of 20%, you could tell investors that your average monthly user engaged with your product six days out of thirty. It was a convenient, communicable stickiness shorthand.</p>
+    
+    <p>But averages are dangerous. A 20% DAU/MAU ratio can occur if every single person uses the product exactly six days a month. It can also occur if 20% of the audience uses the product every single day, and the remaining 80% opens it only once and abandons it. From the standpoint of retention strategy, those are two entirely different businesses. One is a utility that needs to increase usage frequency across the board. The other is a cult hit that needs to figure out why 80% of its audience bounces at the front door.</p>
+    
+    <div class="burst">
+      To understand whether a product actually commands attention, we must stop reducing thousands of human interactions into a single neat fraction. We must visualize the distribution.
+    </div>
+
+    <p>This is where the Power User Curve (also known as an L30 histogram) steps in. Instead of mashing all users into a ratio, it plots them on a 30-day spectrum. It maps the percentage of your active users who were active for 1 day, 2 days, 3 days, all the way up to 30 days in a given month. Suddenly, the fog of averages lifts.</p>
+
+    <p>Building it requires pivoting raw event logs into user-level aggregations. It is a deceptively simple query that separates amateur dashboards from actionable analytical infrastructure.</p>
+
+<pre><code><span class="comment"># Aggregating event logs to build a Power User Curve in Pandas</span>
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+
+<span class="comment"># Assume 'df' contains [user_id, timestamp, event_type]</span>
+df['date'] = pd.to_datetime(df['timestamp']).dt.date
+
+<span class="comment"># Step 1: Count distinct active days per user</span>
+active_days_per_user = df.groupby('user_id')['date'].nunique()
+
+<span class="comment"># Step 2: Bucket the user counts by number of active days (1 to 30)</span>
+histogram = active_days_per_user.value_counts().sort_index()
+
+<span class="comment"># Step 3: Convert to percentages of the active base</span>
+power_user_curve = (histogram / len(active_days_per_user)) * 100
+</code></pre>
+
+    <p>Once you plot that output, you are no longer staring at a gauge on a dashboard. You are reading a shape. And in product analytics, the shape dictates the strategy.</p>
+  </div>
+
+  <h2 class="section-prompt">How do we interpret the shape of the curve?</h2>
+
+  <div class="prose">
+    <p>Reading the curve is not about admiring a chart; it is about diagnosing a behavioral reality. When analysts speak of the curve's architecture, they are generally looking for weight. Is the weight sitting heavy on the left edge? Is there a bulge in the middle? Or does the distribution sweep upward at the extreme right?</p>
+
+    <p>A left-skewed, rapidly decaying curve is typical of transactional products—a flight booking app, a tax filing portal. High frequency is not expected. But if a social communication tool or a daily habit app exhibits this left-weighted decay, the product is in crisis. Users are attempting to extract value and failing.</p>
+
+    <p>Conversely, a curve that forms a "smile"—heavy on the left, dipping in the middle, and spiking heavily on the far right day-30 bucket—signals something special. It indicates that the product has successfully polarized its audience. While many churn out quickly, those who understand the core loop become addicted. They are the power users.</p>
+  </div>
+
+  <!-- Comparative Histograms -->
+  <div class="comparative-cards">
+    <div class="card">
+      <h3>The Dying Social App</h3>
+      <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet">
+        <line x1="30" y1="200" x2="380" y2="200" stroke="#111" stroke-width="2"/>
+        <line x1="30" y1="20" x2="30" y2="200" stroke="#111" stroke-width="2"/>
+        
+        <!-- Left weighted decay -->
+        <rect x="35" y="40" width="10" height="160" fill="#111" />
+        <rect x="50" y="80" width="10" height="120" fill="#555" />
+        <rect x="65" y="110" width="10" height="90" fill="#888" />
+        <rect x="80" y="130" width="10" height="70" fill="#aaa" />
+        <rect x="95" y="150" width="10" height="50" fill="#ccc" />
+        <rect x="110" y="170" width="10" height="30" fill="#ddd" />
+        <rect x="125" y="180" width="10" height="20" fill="#eee" />
+        <rect x="140" y="190" width="10" height="10" fill="#eee" />
+        <!-- Barely anything after day 10 -->
+        <text x="350" y="220" font-family="Inter" font-size="10" text-anchor="middle">Day 30</text>
+        <text x="40" y="220" font-family="Inter" font-size="10" text-anchor="middle">Day 1</text>
+      </svg>
+      <div class="caption">A pure decay curve.</div>
+      <p>This shape indicates severe retention failure. Users download the app, open it for one or two days, and abandon it. Pumping marketing spend into this product is akin to pouring water into a sieve. The business mandate is not acquisition; it is a fundamental rebuild of the core value proposition.</p>
+    </div>
+
+    <div class="card">
+      <h3>The B2B SaaS Utility</h3>
+      <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid meet">
+        <line x1="30" y1="200" x2="380" y2="200" stroke="#111" stroke-width="2"/>
+        <line x1="30" y1="20" x2="30" y2="200" stroke="#111" stroke-width="2"/>
+        
+        <!-- Weekday peaks (20 days out of 30) -->
+        <rect x="35" y="100" width="10" height="100" fill="#eee" />
+        
+        <!-- Bulge around 20 days -->
+        <path d="M 230 40 L 230 30 L 290 30 L 290 40" stroke="#111" fill="none" />
+        <text x="260" y="20" font-family="Inter" font-size="10" font-weight="600" text-anchor="middle">WEEKDAY USAGE</text>
+
+        <rect x="230" y="120" width="10" height="80" fill="#888" />
+        <rect x="245" y="90" width="10" height="110" fill="#555" />
+        <rect x="260" y="50" width="10" height="150" fill="#111" />
+        <rect x="275" y="80" width="10" height="120" fill="#555" />
+        <rect x="290" y="130" width="10" height="70" fill="#888" />
+
+        <text x="350" y="220" font-family="Inter" font-size="10" text-anchor="middle">Day 30</text>
+        <text x="40" y="220" font-family="Inter" font-size="10" text-anchor="middle">Day 1</text>
+      </svg>
+      <div class="caption">A middle-bulge curve centered around 20 days.</div>
+      <p>This is a classic enterprise or work-related tool profile. There are roughly 20 to 22 working days in a month. By showing a hard spike at day 20 and zero usage at day 30, the metric exposes that this app is a job requirement, not a weekend leisure habit. Trying to artificially push users into the 30-day bucket here is a waste of capital.</p>
+    </div>
+  </div>
+
+  <h2 class="section-prompt">How do we connect the curve to retention strategy?</h2>
+
+  <div class="prose">
+    <p>A power user curve is not merely descriptive; it is prescriptive. If your product aims to be a daily habit, the first goal is to ensure the curve smiles. The second goal is to consistently shift the entire distribution to the right over time.</p>
+
+    <div class="burst">
+      When operators focus purely on the average DAU/MAU, they deploy blunt instruments: blind push notifications or blanket email campaigns. When they look at the curve, they target interventions based on where a user is stuck.
+    </div>
+
+    <p>For the massive population occupying the Day 1 to Day 3 bucket, the strategy is aggressive onboarding and core-loop education. These users have not experienced the "aha moment." They do not need complex feature announcements; they need drastic simplification.</p>
+
+    <p>For the emerging regulars hovering in the Day 10 to Day 15 bucket, the strategy is habit solidification. This is where personalized nudges, lifecycle emails, and sophisticated re-engagement loops excel. The objective is to pull them over the friction threshold until the behavior becomes autonomic.</p>
+
+    <p>As for the power users sitting on the 30-day edge—do not manipulate them with rudimentary retention tactics. Instead, study them. The users on the rightmost edge of the curve hold the product's future. What actions do they take that the 3-day users skip? What modules do they ignore? What integrations do they depend upon? This cohort shouldn't be spammed; they should be harvested for product roadmaps and up-selling models.</p>
+
+    <p>Ultimately, transitioning an organization from DAU/MAU reporting to Power User Curve analysis is a cultural shift. It forces the business to acknowledge that a user base is not a monolith yielding an aggregate score. It is a complex ecosystem of passing tourists and devoted locals, each demanding a fundamentally different operational response.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
