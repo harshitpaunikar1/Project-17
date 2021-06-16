@@ -16,3 +16,7 @@
 
 - Task summary: By this point I had the rough direction, so the work became more practical. I spent most of the day trying to make the tables usable by fixing labels, missing values, and formatting issues and make the whole thing feel less half baked. Once the base made some sense, I could finally move a bit faster and stop second guessing every tiny decision. A lot of this also meant checking if the numbers were making sense and not just trusting the first result that showed up.
 - Deliverable: I wrapped up the day with usable analysis dataset mostly in place. It was not perfect, but it was good enough to keep the project moving. I also left myself a few rough reminders for the next day so I would not have to rediscover the same context again.
+## 2021-06-16 - Day 4: EDA
+
+- Task summary: By this point I had the rough direction, so the work became more practical. I spent most of the day triyng to chart the main variables and identify the strongest descriptive patterns and make the whole thing feel less half baked. The middle part always takes longer than it should, mostly becuase one fix usually reveals two more things to clean up. I kept bouncing between the notebook, small observations, and quick plots until the direction felt usable.
+- Deliverable: I wrapped up the day with eDA charts mostly in place. It was not perfect, but it was good enough to keep the project moving. There were still a couple of loose parts, but nothing serious enough to block the next step.
