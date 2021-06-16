@@ -20,3 +20,7 @@
 
 - Task summary: Ended up revisiting this in the evening — spent time just reading back through everything to make sure it still made sense end to end.
 - Deliverable: Cleaner than this morning's version.
+## 2021-06-16 - Day 4: EDA
+
+- Task summary: By this point I had the rough direction, so the work became more practical. I spent most of the day triyng to chart the main variables and identify the strongest descriptive patterns and make the whole thing feel less half baked. The middle part always takes longer than it should, mostly becuase one fix usually reveals two more things to clean up. I kept bouncing between the notebook, small observations, and quick plots until the direction felt usable.
+- Deliverable: I wrapped up the day with eDA charts mostly in place. It was not perfect, but it was good enough to keep the project moving. There were still a couple of loose parts, but nothing serious enough to block the next step.
