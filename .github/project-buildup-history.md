@@ -24,3 +24,7 @@
 
 - Task summary: By this point I had the rough direction, so the work became more practical. I spent most of the day triyng to chart the main variables and identify the strongest descriptive patterns and make the whole thing feel less half baked. The middle part always takes longer than it should, mostly becuase one fix usually reveals two more things to clean up. I kept bouncing between the notebook, small observations, and quick plots until the direction felt usable.
 - Deliverable: I wrapped up the day with eDA charts mostly in place. It was not perfect, but it was good enough to keep the project moving. There were still a couple of loose parts, but nothing serious enough to block the next step.
+## 2021-06-17 - Day 5: Comparisons
+
+- Task summary: This was the middle stretch where the project started feeling real. I kept going and tried to break the data into a few meaningful segments or periods and compare them, then cleaned up whatever looked confusing or weak from the earlier days. By now I had enough structure to keep going without staring at the screen too long, which honestly helped a lot. Most of the progress here came from patient cleanup more than anything flashy.
+- Deliverable: Ended the day with comparison table in hand, plus a few side notes on what still needed fixing later. It was not super polished, just stable enough that I felt okay moving forward.
