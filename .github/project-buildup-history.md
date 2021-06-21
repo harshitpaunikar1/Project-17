@@ -28,3 +28,7 @@
 
 - Task summary: This was the middle stretch where the project started feeling real. I kept going and tried to turn the charts into a short list of plain-language findings, then cleaned up whatever looked confusing or weak from the earlier days. Once the base made some sense, I could finally move a bit faster and stop second guessing every tiny decision. A lot of this also meant checking if the numbers were making sense and not just trusting the first result that showed up.
 - Deliverable: Ended the day with insight notes in hand, plus a few side notes on what still needed fixing later. I also left myself a few rough reminders for the next day so I would not have to rediscover the same context again.
+## 2021-06-21 - Day 7: Business meaning
+
+- Task summary: This was the middle stretch where the project started feeling real. I kept going and tried to connect the findings to what a manager or stakeholder should do next, then cleaned up whatever looked confusing or weak from the earlier days. The middle part always takes longer than it should, mostly becuase one fix usually reveals two more things to clean up. I kept bouncing between the notebook, small observations, and quick plots until the direction felt usable.
+- Deliverable: Ended the day with actionable conclusions in hand, plus a few side notes on what still needed fixing later. There were still a couple of loose parts, but nothing serious enough to block the next step.
