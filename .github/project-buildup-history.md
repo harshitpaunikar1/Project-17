@@ -48,3 +48,7 @@
 
 - Task summary: Closer to the end, I was mostly tightening things up instead of inventing new scope. The job for the day was to prepare a short slide-style summary or README with the strongest visuals so the final result looked a bit more complete. I was not trying to add anything fancy here, just making sure the thing looked complete enough to show someone. A lot of this also meant checking if the numbers were making sense and not just trusting the first result that showed up.
 - Deliverable: Ended the day with stakeholder summary in hand, plus a few side notes on what still needed fixing later. I also left myself a few rough reminders for the next day so I would not have to rediscover the same context again.
+## 2021-06-24 - Day 10: Final review wrap
+
+- Task summary: Used the last day on Power User Curve Analysis to slow down and finish the loose ends. I mainly had to check the numbers, labels, and wording one last time and make sure the project told a clean story from start to finish. Most of the heavy lifting was already done, so this part was more about making the rough edges less obvious. I kept bouncing between the notebook, small observations, and quick plots until the direction felt usable.
+- Deliverable: Finished with reviewed analysis looking decent enough to call this version done, even if I could still nitpick a few things. There were still a couple of loose parts, but nothing serious enough to block the next step.
