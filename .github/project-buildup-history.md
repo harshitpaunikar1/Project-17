@@ -18,7 +18,7 @@
 - Deliverable: I wrapped up the day with usable analysis dataset mostly in place. It was not perfect, but it was good enough to keep the project moving. I also left myself a few rough reminders for the next day so I would not have to rediscover the same context again.
 ## 2021-06-15 - Day 3: Cleanup pass
 
-- Task summary: Ended up revisiting this in the evening — spent time just reading back through everything to make sure it still made sense end to end.
+- Task summary: Ended up revisiting this in the evening - spent time just reading back through everything to make sure it still made sense end to end.
 - Deliverable: Cleaner than this morning's version.
 ## 2021-06-16 - Day 4: EDA
 
@@ -34,8 +34,8 @@
 - Deliverable: Ended the day with insight notes in hand, plus a few side notes on what still needed fixing later. I also left myself a few rough reminders for the next day so I would not have to rediscover the same context again.
 ## 2021-06-18 - Day 6: Insight writing
 
-- Task summary: Got stuck mid-afternoon and had to regroup — fixed the README section that was missing the setup step — embarrassing oversight.
-- Deliverable: Nothing dramatic — just keeping things tidy.
+- Task summary: Got stuck mid-afternoon and had to regroup - fixed the README section that was missing the setup step - embarrassing oversight.
+- Deliverable: Nothing dramatic - just keeping things tidy.
 ## 2021-06-21 - Day 7: Business meaning
 
 - Task summary: This was the middle stretch where the project started feeling real. I kept going and tried to connect the findings to what a manager or stakeholder should do next, then cleaned up whatever looked confusing or weak from the earlier days. The middle part always takes longer than it should, mostly becuase one fix usually reveals two more things to clean up. I kept bouncing between the notebook, small observations, and quick plots until the direction felt usable.
